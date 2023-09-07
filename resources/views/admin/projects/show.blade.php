@@ -5,8 +5,23 @@
 
     <section>
 
-        <h3> <span class="badge text-black"
-                style="background-color: {{ $project->type?->color }}">{{ $project->type?->label }}</span></h3>
+        {{-- TYPE BADGE --}}
+        @if ($project->type)
+            <h3>
+                <span class="badge text-black" style="background-color: {{ $project->type?->color }}">
+                    {{ $project->type?->label }}
+                </span>
+            </h3>
+        @endif
+        @if (count($project->technologies))
+            {{-- TECHNOLOGIES BADGES --}}
+            <div class="my-3">
+                @foreach ($project->technologies as $technology)
+                    <small class="badge" style="background-color: {{ $technology->color }}">{{ $technology->label }}</small>
+                @endforeach
+            </div>
+        @endif
+
 
         <div class="row">
             <div class="col-12 col-md-8">
