@@ -19,6 +19,7 @@ class Form extends Component
         public Collection $technologies,
         public string $method,
         public string $action,
+        public array $projectTechnologyIds = [],
     ) {
         //
     }

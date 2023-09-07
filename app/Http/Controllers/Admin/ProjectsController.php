@@ -65,6 +65,8 @@ class ProjectsController extends Controller
 
         $project = Project::create($data);
 
+        if (array_key_exists('technology_ids', $data)) $project->technologies()->attach($data['technology_ids']);
+
         return to_route('admin.projects.show', compact('project'));
     }
 
@@ -83,8 +85,9 @@ class ProjectsController extends Controller
     {
         $types = Type::select('label', 'id')->get();
         $technologies = Technology::select('id', 'label')->get();
+        $projectTechnologyIds = $project->technologies->pluck('id')->toArray();
 
-        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
+        return view('admin.projects.edit', compact('project', 'types', 'technologies', 'projectTechnologyIds'));
     }
 
     /**
