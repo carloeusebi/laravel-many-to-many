@@ -23,8 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('projects', function (Blueprint $table) {
-            $table->string('url', 80)->nullable()->change();
-            $table->string('github_url', 80)->nullable()->change();
+            //empty because reverting this migration causes database errors
         });
     }
 };
