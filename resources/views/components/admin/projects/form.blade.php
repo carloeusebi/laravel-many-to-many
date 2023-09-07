@@ -95,13 +95,10 @@
 
         <hr class="my-3">
 
-        <div class="my-3">
+        <div class="my-3 d-flex justify-content-end ">
             <button class="btn btn-primary" type="submit">Submit form</button>
         </div>
     </form>
-
-
-
 
 
 

@@ -45,7 +45,9 @@ class ProjectsController extends Controller
     {
         $project = new Project();
         $types = Type::select('label', 'id')->get();
-        return view('admin.projects.create', compact('project', 'types'));
+        $technologies = Technology::select('id', 'label')->get();
+
+        return view('admin.projects.create', compact('project', 'types', 'technologies'));
     }
 
     /*
@@ -80,7 +82,9 @@ class ProjectsController extends Controller
     public function edit(Project $project)
     {
         $types = Type::select('label', 'id')->get();
-        return view('admin.projects.edit', compact('project', 'types'));
+        $technologies = Technology::select('id', 'label')->get();
+
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
