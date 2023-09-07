@@ -28,6 +28,7 @@ class ProjectRequest extends FormRequest
             'github_url' => 'nullable|max:80|url',
             'thumbnail' => 'nullable|image:jpg:jpeg:png:webp',
             'description' => 'required',
+            'technologies' => 'nullable|exists:technologies,id'
         ];
     }
 }

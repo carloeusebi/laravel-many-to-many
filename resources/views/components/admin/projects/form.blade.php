@@ -58,8 +58,8 @@
             @enderror
         </div>
 
-        {{-- DESCRIPTION --}}
         <div class="col-12 d-flex align-items-start">
+            {{-- DESCRIPTION --}}
             <div class="col-12 col-md-8">
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
@@ -91,6 +91,20 @@
                     src="{{ old('thumbUlr', $project->thumbUrl) ?? Vite::asset('resources/images/placeholder.jpg') }}"
                     alt="thumbnail preview" class="img-fluid w-100 " />
             </div>
+        </div>
+
+        {{-- TECHNOLOGIES --}}
+        <div class="col-12 mb-3">
+            @foreach ($technologies as $technology)
+                <div class="form-check form-check-inline user-select-none " role="button">
+                    <input class="form-check-input" type="checkbox" id="technology-{{ $technology->id }}"
+                        name="technologies[]" value="{{ $technology->id }}"
+                        @if (in_array($technology->id, old('technologies', $project_technology_ids ?? []))) checked @endif>
+                    <label class="form-check-label" for="technology-{{ $technology->id }}" role="button">
+                        {{ $technology->label }}
+                    </label>
+                </div>
+            @endforeach
         </div>
 
         <hr class="my-3">
