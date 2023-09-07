@@ -107,7 +107,13 @@ class ProjectsController extends Controller
             $data['thumbnail'] = $thumbnail;
         }
 
+        // update the project in the db
         $project->update($data);
+
+        // sync the technologies
+        $project_technology_ids = $data['technology_ids'] ?? [];
+        $project->technologies()->sync($project_technology_ids);
+
 
         return to_route('admin.projects.show', compact('project'))
             ->with('alert-type', 'success')
