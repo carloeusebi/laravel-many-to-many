@@ -24,11 +24,11 @@ class ProjectRequest extends FormRequest
         return [
             'name' => 'required|max:80',
             'type_id' => 'nullable|exists:types,id',
-            'url' => 'nullable|max:80|url',
-            'github_url' => 'nullable|max:80|url',
+            'url' => 'nullable|max:160|url',
+            'github_url' => 'nullable|max:160|url',
             'thumbnail' => 'nullable|image:jpg:jpeg:png:webp',
             'description' => 'required',
-            'technologies' => 'nullable|exists:technologies,id'
+            'technology_ids' => 'nullable|exists:technologies,id'
         ];
     }
 }
