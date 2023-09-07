@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -32,8 +33,8 @@ class ProjectsController extends Controller
         }
 
         $projects = $query->paginate(10);
-
         $types = Type::select('id', 'label')->get();
+
         return view('admin.projects.index', compact('projects', 'types', 'type_filter'));
     }
 

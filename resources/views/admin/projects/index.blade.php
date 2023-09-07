@@ -50,8 +50,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Description</th>
                         <th scope="col">Type</th>
-                        <th scope="col">Created</th>
-                        <th scope="col">Updated</th>
+                        <th scope="col">Technologies</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -66,12 +65,22 @@
                                     ...
                                 @endif
                             </td>
+                            {{-- TYPES --}}
                             <td>
                                 <span class="badge text-black"
                                     style="background-color: {{ $project->type?->color }}">{{ $project->type?->label }}</span>
                             </td>
-                            <td>{{ $project->created_at }}</td>
-                            <td>{{ $project->updated_at }}</td>
+                            {{-- TECHNOLOGIES --}}
+                            <td>
+                                @foreach ($project->technologies as $technology)
+                                    <small>
+                                        {{ $technology->label }}
+                                        @if (!$loop->last)
+                                            ,
+                                        @endif
+                                    </small>
+                                @endforeach
+                            </td>
                             <td>
                                 <div class="d-flex gap-1 justify-content-end ">
                                     {{-- show button --}}
